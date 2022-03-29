@@ -1,5 +1,6 @@
 
 https://www.cnblogs.com/-xlp/p/8617760.html
+MySQL 支持多种类型，大致可以分为三类：数值、日期/时间和字符串(字符)类型。
 
 一、MySQL的数据类型
 主要包括以下五大类：
