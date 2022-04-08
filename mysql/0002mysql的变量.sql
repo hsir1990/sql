@@ -1,3 +1,94 @@
+1 整型 
+取值范围如果加了unsigned，则最大值翻倍，如tinyint unsigned的取值范围为(0~256)。
+int(m)里的m是表示SELECT查询结果集中的显示宽度，并不影响实际的取值范围，没有影响到显示的宽度，不知道这个m有什么用。
+
+2浮点型(float和double)
+ 设一个字段定义为float(6,3)，如果插入一个数123.45678,实际数据库里存的是123.457，但总个数还以实际为准，即6位。整数部分最大是3位，如果插入数12.123456，存储的是12.1234，如果插入12.12，存储的是12.1200.
+
+3、定点数
+浮点型在数据库中存放的是近似值，而定点类型在数据库中存放的是精确值。 
+
+decimal(m,d) 参数m<65 是总个数，d<30且 d<m 是小数位。
+
+4、字符串(char,varchar,_text)
+char和varchar：
+1.char(n) 若存入字符数小于n，则以空格补于其后，查询之时再将空格去掉。所以char类型存储的字符串末尾不能有空格，varchar不限于此。 
+2.char(n) 固定长度，char(4)不管是存入几个字符，都将占用4个字节，varchar是存入的实际字符数+1个字节（n<=255）或2个字节(n>255)，
+所以varchar(4),存入3个字符将占用4个字节。 
+3.char类型的字符串检索速度要比varchar类型的快。
+varchar和text： 
+1.varchar可指定n，text不能指定，内部存储varchar是存入的实际字符数+1个字节（n<=255）或2个字节(n>255)，text是实际字符数+2个字
+节。 
+2.text类型不能有默认值。 
+3.varchar可直接创建索引，text创建索引要指定前多少个字符。varchar查询速度快于text,在都创建索引的情况下，text的索引似乎不起作用。
+ 
+检查索引速度
+char > varchar > text
+
+5.二进制数据(_Blob)
+
+1._BLOB和_text存储方式不同，_TEXT以文本方式存储，英文存储区分大小写，而_Blob是以二进制方式存储，不分大小写。
+2._BLOB存储的数据只能整体读出。 
+3._TEXT可以指定字符集，_BLOb不用指定字符集。
+通过把内容散列，然后当作索引，去查讯
+
+6.日期时间类型
+若定义一个字段为timestamp，这个字段里的时间数据会随其他字段修改的时候自动刷新，所以这个数据类型的字段可以存放这条记录最后被修改的时间。
+
+
+synthetic
+英 [sɪnˈθetɪk]   美 [sɪnˈθetɪk]  
+adj.
+(人工)合成的;人造的;综合(型)的
+n.
+合成物;合成纤维(织物);合成剂
+复数： synthetics
+派生词： synthetically adv.
+记忆技巧：syn 共同 + thet 放置 + ic …的 → 放在一起的 → 综合的
+
+
+optimize
+英 [ˈɒptɪmaɪz]   美 [ˈɑːptɪmaɪz]  
+vt.
+优化;使最优化;充分利用
+第三人称单数： optimizes现在分词： optimizing过去式： optimized过去分词： optimized
+记忆技巧：optim 最好，最佳 + ize 使… → 使…尽可能优化
+
+CHARACTER SET name	指定一个字符集
+character
+英 [ˈkærəktə(r)]   美 [ˈkærəktər]  
+n.
+性格;(人、集体的)品质;(地方的)特点;(事物、事件或地方的)特征;勇气;毅力;（地方或人的）与众不同之处，特色;人;名誉;人物，角色;文字，字母，符号
+vt.
+刻;印;使具有特征
+第三人称单数： characters复数： characters现在分词： charactering过去式： charactered过去分词： charactered
+
+
+Blob
+英 [blɒb]   美 [blɑːb]  
+肉球;二进制格式;粒子;斑点;不规则气泡
+
+blob
+英 [blɒb]   美 [blɑːb]  
+n.
+(尤指液体的)一点，一滴;(颜色的)一小片，斑点
+vt.
+弄脏;弄错
+第三人称单数： blobs复数： blobs现在分词： blobbing过去式： blobbed过去分词： blobbed
+
+unsigned
+英 [ʌnˈsaɪnd]   美 [ənˈsaɪnd]  
+adj.
+没签名的;未签约的
+
+decimal
+英 [ˈdesɪml]   美 [ˈdesɪml]  
+adj.
+十进制的;小数的;十进位的
+n.
+小数
+复数： decimals
+
 
 https://www.cnblogs.com/-xlp/p/8617760.html
 MySQL 支持多种类型，大致可以分为三类：数值、日期/时间和字符串(字符)类型。
