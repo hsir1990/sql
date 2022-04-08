@@ -11,15 +11,15 @@ balance 表中的插入数据，uid 一定是user表中的id的值，否则插�
 
 删除user表中的数据，一定是balance里没有user的id的值，才能删除，否则报错
 
-NULL、RESTRICT、NO ACTION
+null、restrict、no action
 删除：从表记录不存在时，主表才可以删除。
 更新：从表记录不存在时，主表才可以更新。
 
-CASCADE
+cascade
 删除：删除主表时自动删除从表。
 更新：更新主表时自动更新从表。
 
-SET NULL
+set null
 删除：删除主表时自动更新从表值为NULL。
 更新：更新主表时自动更新从表值为NULL。
 
@@ -35,6 +35,13 @@ SET NULL
 
 但无论什么约束情况，  主表不存在的主键子表也是不能插入相应的外键的，  这是所有外键约束的基本原则。
 
+
+-- restrict
+-- 英 [rɪˈstrɪkt]   美 [rɪˈstrɪkt]  
+-- vt.
+-- (以法规)限制;限定(数量、范围等);束缚;妨碍;阻碍;约束
+-- 第三人称单数： restricts现在分词： restricting过去式： restricted过去分词： restricted
+-- 记忆技巧：re 一再 + strict 拉紧 → 一再拉紧 → 限制
 
 
 
