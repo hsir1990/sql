@@ -2,8 +2,11 @@
 
 
 
+阿里云的redis装包我放的路径是
+/user/local/zipredis/ redis-6.2.5
 
-
+这样就可以启动了，调用前要注意redis.conf的修改
+./src/redis-server redis.conf
 
 https://blog.csdn.net/qq_32907195/article/details/121224784
 
